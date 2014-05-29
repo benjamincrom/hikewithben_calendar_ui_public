@@ -19,12 +19,11 @@
         <div loading-container="tableParams.settings().$loading">
         <table ng-table="tableParams" class="table" width="100%">
           <tr>
-            <th>Hike ID</th>
+            <th>Hike Location Name</th>
             <th>Reservation Status</th>
             <th>Total Capacity</th>
-            <th>Hike Location Name</th>
-            <th>Lat</th>
-            <th>Lon</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
             <th>Hike Start Datetime</th>
             <th>Pics</th>
             <th>Route</th>
@@ -33,16 +32,15 @@
             <th>Hazards</th>
           </tr>
           <tr ng-repeat="hike in hike_list" ng-click="display.hike = hike">
-            <td>{{hike.hike_id}}</td>
+            <td>{{hike.hike_location_name}}</td>
             <td>{{hike.hike_reservation_status}}</td>
             <td>{{hike.hike_total_capacity}}</td>
-            <td>{{hike.hike_location_name}}</td>
             <td>{{hike.hike_location_latitude}}</td>
             <td>{{hike.hike_location_longitude}}</td>
             <td>{{hike.hike_start_datetime}}</td>
             <td>{{hike.hike_pictures_url}}</td>
-            <td>{{hike.}}</td>
-            <td>{{hike.}}</td>
+            <td>{{hike.route_url}}</td>
+            <td>{{hike.notes}}</td>
             <td>{{hike.hike_end_datetime}}</td>
             <td>{{hike.hike_hazards}}</td>
           </tr>
