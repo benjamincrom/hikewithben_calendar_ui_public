@@ -14,12 +14,15 @@ hikeWithBenApp.config(function($locationProvider){
 
 /* Controllers */
 hikeWithBenApp.controller('HikeListCtrl',
-    function getHikeList($scope, $http) {
+    function getHikeList($scope, $http, $sce) {
+        $scope.trustSrc = function(src) {
+          return $sce.trustAsResourceUrl(src);
+        }
         $http.get('https://hikewithben.appspot.com/_ah/api/hikewithben/v1/hike_list').
             success(function(data) {
                 $scope.hike_list = data.hike_list;
             });
-    } 
+    }
 );
 
 hikeWithBenApp.controller('DisplayHikeCtrl',
