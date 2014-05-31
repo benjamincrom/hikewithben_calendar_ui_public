@@ -19,7 +19,7 @@
         <h4 ng-if="hike.hike_distance_miles" align="center">{{hike.hike_distance_miles}} miles<span ng-if="hike.hike_elevation_gain">, +{{hike.hike_elevation_gain}} feet</span></h4>
         <h5 align="center">{{hike.hike_start_datestring}} - {{hike.hike_end_datestring}}</h5>
         <table cellpadding="5" width="100%">
-          <tr><td width="20%"><b>Reservation status: </b></td><td>{{hike.hike_reservation_status}}</td></tr>
+          <tr><td width="15%"><b>Reservation<br>status: </b></td><td>{{hike.hike_reservation_status}}</td></tr>
           <tr ng-if="hike.hike_hazards"><td><b>Hazards: </b></td><td>{{hike.hike_hazards}}</td></tr>
           <tr ng-if="hike.hike_notes"><td><b>Notes: </b></td><td>{{hike.hike_notes}}</td></tr>
           <tr ng-if="hike.hike_location_latitude"><td><b>Location: </b></td><td><a href="http://maps.google.com/?q={{hike.hike_location_latitude}},{{hike.hike_location_longitude}}">{{hike.hike_location_latitude}}, {{hike.hike_location_longitude}}</a></td></tr>
