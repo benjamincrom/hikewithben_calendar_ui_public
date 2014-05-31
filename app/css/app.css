@@ -10,3 +10,7 @@ body {background-color:#5B9CA2;}
     border-color:#B52735;
     margin:10px;
 }
+
+td{
+vertical-align:top;
+}

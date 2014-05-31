@@ -2,7 +2,7 @@
 <html lang="en" ng-app="hikeWithBenApp">
   <head>
     <meta charset="utf-8">
-    <title>HikeWithBen Hiking List</title>
+    <title>HikeWithBen</title>
     <script data-require="angular.js@*" data-semver="1.2.0-rc3-nonmin" src="http://code.angularjs.org/1.2.0-rc.3/angular.js"></script>
     <script data-require="angular-mocks@1.2.0-rc3" data-semver="1.2.0-rc3" src="//code.angularjs.org/1.2.0-rc.3/angular-mocks.js"></script>
     <script data-require="angular-resource@1.2.0-rc.3" data-semver="1.2.0-rc.3" src="http://code.angularjs.org/1.2.0-rc.3/angular-resource.js"></script>
@@ -14,15 +14,18 @@
   </head>
   <body ng-controller="HikeListCtrl" onblur="window.focus();">
     <div width="100%" align="center">
+      <div align="left" class="hike-box"><h3>Greetings fellow hikers!  Please sign in with your Google account and then click "RSVP" to sign up for for any hike.  I will follow up with you via email.</h3></div>
       <div align="left" class="hike-box" ng-repeat="hike in hike_list">
         <h3 align="center">{{hike.hike_location_name}}</h3>
         <h4 ng-if="hike.hike_distance_miles" align="center">{{hike.hike_distance_miles}} miles<span ng-if="hike.hike_elevation_gain">, +{{hike.hike_elevation_gain}} feet</span></h4>
         <h5 align="center">{{hike.hike_start_datestring}} - {{hike.hike_end_datestring}}</h5>
-        Spots remaining: {{hike.hike_total_capacity}}<br />
-        <span ng-if="hike.hike_hazards">Hazards: {{hike.hike_hazards}}<br /></span>
-        <span ng-if="hike.hike_notes">Notes: {{hike.hike_notes}}<br /></span>
-        Location: <a href="http://maps.google.com/?q={{hike.hike_location_latitude}},{{hike.hike_location_longitude}}">{{hike.hike_location_latitude}}, {{hike.hike_location_longitude}}</a><br />
-        <a ng-if="hike.hike_route_url" href="{{hike.hike_route_url}}">Recorded GPS Route</a><br ng-if="hike.hike_route_url" /><br />
+        <table cellpadding="5" width="100%">
+          <tr><td width="20%"><b>Reservation status: </b></td><td>{{hike.hike_reservation_status}}</td></tr>
+          <tr ng-if="hike.hike_hazards"><td><b>Hazards: </b></td><td>{{hike.hike_hazards}}</td></tr>
+          <tr ng-if="hike.hike_notes"><td><b>Notes: </b></td><td>{{hike.hike_notes}}</td></tr>
+          <tr ng-if="hike.hike_location_latitude"><td><b>Location: </b></td><td><a href="http://maps.google.com/?q={{hike.hike_location_latitude}},{{hike.hike_location_longitude}}">{{hike.hike_location_latitude}}, {{hike.hike_location_longitude}}</a></td></tr>
+          <tr ng-if="hike.hike_route_url"><td><a href="{{hike.hike_route_url}}"><b>Recorded GPS Route</b></a><br ng-if="hike.hike_route_url" /></td><td></td></tr>
+        </table><br />
         <center><iframe width="90%" height="600" ng-if="hike.hike_pictures_url" ng-src="{{trustSrc(hike.hike_pictures_url)}}"></iframe>
       </div>
     </div>
