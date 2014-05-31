@@ -8,21 +8,22 @@
     <script data-require="angular-resource@1.2.0-rc.3" data-semver="1.2.0-rc.3" src="http://code.angularjs.org/1.2.0-rc.3/angular-resource.js"></script>
     <script data-require="angular-sanitize@1.2.0-rc.3" data-semver="1.2.0-rc.3" src="http://code.angularjs.org/1.2.0-rc.3/angular-sanitize.js"></script>
     <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.7.0.js"></script>
-    <link data-require="bootstrap-css@*" data-semver="3.0.0" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+    <link data-require="bootstrap-css@*" data-semver="3.0.0" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/app.css">
     <script src="js/app.js"></script>
   </head>
   <body ng-controller="HikeListCtrl">
-    <div class="hike-box" ng-repeat="hike in hike_list">
-      <h3>{{hike.hike_location_name}}</h3><br />
-      <h4>{{hike.hike_start_datestring}} - {{hike.hike_end_datestring}}</h4><br />
-      total capacity: {{hike.hike_total_capacity}}<br />
-      Location: {{hike.hike_location_latitude}}, {{hike.hike_location_longitude}}<br />
-      <a href="{{hike.hike_route_url}}">Route</a><br />
-      Notes: {{hike.hike_notes}}<br />
-      Hazards: {{hike.hike_hazards}}<br />
-      Pics: {{hike.hike_pictures_url}}<br />
-      <iframe width="100%" height="600" ng-if="hike.hike_pictures_url" ng-src="{{trustSrc(hike.hike_pictures_url)}}"></iframe>
+    <div width="100%" align="center">
+    <div align="left" class="hike-box" ng-repeat="hike in hike_list">
+      <h3 align="center">{{hike.hike_location_name}}</h3><br />
+      <h5 align="center">{{hike.hike_start_datestring}} - {{hike.hike_end_datestring}}</h5><br />
+      Spots remaining: {{hike.hike_total_capacity}}<br />
+      Location: <a href="http://maps.google.com/?q={{hike.hike_location_latitude}},{{hike.hike_location_longitude}}">{{hike.hike_location_latitude}}, {{hike.hike_location_longitude}}</a><br />
+      <span ng-if="hike.hike_hazards">Hazards: {{hike.hike_hazards}}<br /></span>
+      <a ng-if="hike.hike_route_url" href="{{hike.hike_route_url}}">Route</a><br ng-if="hike.hike_route_url" />
+      <span ng-if="hike.hike_notes">Notes: {{hike.hike_notes}}<br /></span>
+      <center><iframe width="80%" height="600" ng-if="hike.hike_pictures_url" ng-src="{{trustSrc(hike.hike_pictures_url)}}"></iframe></center>
+    </div>
     </div>
   </body>
 </html>

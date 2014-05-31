@@ -1,7 +1,12 @@
 /* app css stylesheet */
+body {background-color:#5B9CA2;}
+
 .hike-box{
-    width:600px;
+    background-color:#F5F1D8;
+    width:800px;
     padding:10px;
-    border:5px solid gray;
-    margin:0px;
+    border:5px;
+    border-style:solid;
+    border-color:#B52735;
+    margin:10px;
 }
