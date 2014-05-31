@@ -16,6 +16,7 @@
     <div width="100%" align="center">
       <div align="left" class="hike-box" ng-repeat="hike in hike_list">
         <h3 align="center">{{hike.hike_location_name}}</h3>
+        <h4 ng-if="hike.hike_distance_miles" align="center">{{hike.hike_distance_miles}} miles<span ng-if="hike.hike_elevation_gain">, +{{hike.hike_elevation_gain}} feet</span></h4>
         <h5 align="center">{{hike.hike_start_datestring}} - {{hike.hike_end_datestring}}</h5>
         Spots remaining: {{hike.hike_total_capacity}}<br />
         Location: <a href="http://maps.google.com/?q={{hike.hike_location_latitude}},{{hike.hike_location_longitude}}">{{hike.hike_location_latitude}}, {{hike.hike_location_longitude}}</a><br />
