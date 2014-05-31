@@ -15,15 +15,14 @@
   <body ng-controller="HikeListCtrl">
     <div class="hike-box" ng-repeat="hike in hike_list">
       <h3>{{hike.hike_location_name}}</h3><br />
-      Reservation Status: {{hike.hike_reservation_status}}<br />
-      Total Capacity: {{hike.hike_total_capacity}}<br />
+      <h4>{{hike.hike_start_datestring}} - {{hike.hike_end_datestring}}</h4><br />
+      total capacity: {{hike.hike_total_capacity}}<br />
       Location: {{hike.hike_location_latitude}}, {{hike.hike_location_longitude}}<br />
-      Hike Dates: {{hike.hike_start_datetime}} - {{hike.hike_end_datetime}}<br />
       <a href="{{hike.hike_route_url}}">Route</a><br />
       Notes: {{hike.hike_notes}}<br />
       Hazards: {{hike.hike_hazards}}<br />
       Pics: {{hike.hike_pictures_url}}<br />
-      <iframe ng-if="hike.hike_pictures_url" ng-src="{{trustSrc(hike.hike_pictures_url)}}"></iframe>
+      <iframe width="100%" height="600" ng-if="hike.hike_pictures_url" ng-src="{{trustSrc(hike.hike_pictures_url)}}"></iframe>
     </div>
   </body>
 </html>
