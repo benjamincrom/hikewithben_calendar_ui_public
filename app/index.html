@@ -1,32 +1,100 @@
-<!doctype html>
-<html lang="en" ng-app="hikeWithBenApp">
-  <head>
-    <meta charset="utf-8">
-    <title>HikeWithBen</title>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-resource.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-sanitize.min.js"></script>
-    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.7.0.min.js"></script>
-    <link data-require="bootstrap-css@*" data-semver="3.0.0" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="css/app.css">
-    <script src="js/app.js"></script>
-  </head>
-  <body ng-controller="HikeListCtrl" onblur="window.focus();">
-    <div width="100%" align="center">
-      <div align="left" class="hike-box"><h3>Greetings fellow hikers!  Please sign in with your Google account and then click "RSVP" to sign up for for any hike.  I will follow up with you via email.</h3></div>
-      <div align="left" class="hike-box" ng-repeat="hike in hike_list">
-        <h3 align="center">{{hike.hike_location_name}}</h3>
-        <h4 ng-if="hike.hike_distance_miles" align="center">{{hike.hike_distance_miles}} miles<span ng-if="hike.hike_elevation_gain">, +{{hike.hike_elevation_gain}} feet</span></h4>
-        <h5 align="center">{{hike.hike_start_datestring}} - {{hike.hike_end_datestring}}</h5>
-        <table cellpadding="5" width="100%">
-          <tr><td width="15%"><b>Reservation<br>status: </b></td><td>{{hike.hike_reservation_status}}</td></tr>
-          <tr ng-if="hike.hike_hazards"><td><b>Hazards: </b></td><td>{{hike.hike_hazards}}</td></tr>
-          <tr ng-if="hike.hike_notes"><td><b>Notes: </b></td><td>{{hike.hike_notes}}</td></tr>
-          <tr ng-if="hike.hike_location_latitude"><td><b>Location: </b></td><td><a href="http://maps.google.com/?q={{hike.hike_location_latitude}},{{hike.hike_location_longitude}}">{{hike.hike_location_latitude}}, {{hike.hike_location_longitude}}</a></td></tr>
-          <tr ng-if="hike.hike_route_url"><td><a href="{{hike.hike_route_url}}"><b>Recorded GPS Route</b></a><br ng-if="hike.hike_route_url" /></td><td></td></tr>
-        </table><br />
-        <center><iframe width="90%" height="600" ng-if="hike.hike_pictures_url" ng-src="{{trustSrc(hike.hike_pictures_url)}}"></iframe>
-      </div>
+<html>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="handlebars-v1.3.0.js"></script>
+  
+  <link rel="stylesheet" href="css/app.css">
+
+  <span id="content-placeholder" class="text_js"></span>
+
+  <script id="hike-list-template" type="text/x-handlebars-template">
+  <div width="100%" align="center">
+    <div align="left" class="hike-box">
+      <h3>
+        Greetings fellow hikers!  Please email me your RSVP at benjamincrom@gmail.com.  
+        I will follow up with you via email.
+      </h3>
     </div>
-  </body>
+    {{#each hike_list}}
+    <div align="left" class="hike-box">
+      <h3 align="center">{{hike_location_name}}</h3>
+      <h4 align="center">
+        {{#if hike_distance_miles}}
+          {{hike_distance_miles}} miles
+        {{/if}}
+         
+        {{#if hike_elevation_gain}}
+          +{{hike_elevation_gain}} feet
+        {{/if}}
+      </h4>
+      <h5 align="center">{{hike_start_datestring}} - {{hike_end_datestring}}</h5>
+      
+      <table cellpadding="5" width="100%">
+
+        <tr>
+          <td width="15%">
+            <b>Reservation<br>Status: </b>
+          </td>
+          <td>
+            {{hike_reservation_status}}
+          </td>
+        </tr>
+
+        {{#if hike_hazards}}
+          <tr>
+            <td>
+              <b>Hazards: </b>
+            </td>
+            <td>
+              {{hike_hazards}}
+            </td>
+          </tr>
+        {{/if}}
+
+        {{#if hike_notes}}
+          <tr>
+            <td>
+              <b>Notes: </b>
+            </td>
+            <td>
+              {{hike_notes}}
+            </td>
+          </tr>
+        {{/if}}
+
+        {{#if hike_location_latitude}}
+          <tr>
+            <td>
+              <b>Location: </b>
+            </td>
+            <td>
+              <a href="http://maps.google.com/?q={{hike_location_latitude}},{{hike_location_longitude}}">
+              {{hike_location_latitude}}, {{hike_location_longitude}}</a>
+            </td>
+          </tr>
+        {{/if}}
+
+        {{#if hike_route_url}}
+          <tr>
+            <td>
+              <a href="{{hike_route_url}}"><b>Recorded GPS Route</b></a><br />
+            </td>
+            <td>
+            </td>
+          </tr>
+        {{/if}}
+
+      </table><br />
+
+      {{#if hike_pictures_url}}
+        <center><iframe width="90%" height="600" src="{{hike_pictures_url}}"></iframe>
+      {{/if}}
+
+    </div>
+    
+    {{/each}}
+
+  </script>
+  </div>
+
+  <script src="js/app.js"></script>
 </html>
