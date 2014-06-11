@@ -7,29 +7,26 @@
   <span id="content-placeholder" class="text_js"></span>
 
   <script id="hike-list-template" type="text/x-handlebars-template">
+
   <div width="100%" align="center">
+
     <div align="left" class="hike-box">
       <h3>
         Greetings fellow hikers!  Please email me your RSVP at benjamincrom@gmail.com.  
         I will follow up with you via email.
       </h3>
     </div>
+    
     {{#each hike_list}}
     <div align="left" class="hike-box">
       <h3 align="center">{{hike_location_name}}</h3>
       <h4 align="center">
-        {{#if hike_distance_miles}}
-          {{hike_distance_miles}} miles
-        {{/if}}
-         
-        {{#if hike_elevation_gain}}
-          +{{hike_elevation_gain}} feet
-        {{/if}}
+        {{#if hike_distance_miles}}{{hike_distance_miles}} miles{{/if}}
+        {{#if hike_elevation_gain}} +{{hike_elevation_gain}} feet{{/if}}
       </h4>
       <h5 align="center">{{hike_start_datestring}} - {{hike_end_datestring}}</h5>
       
       <table cellpadding="5" width="100%">
-
         <tr>
           <td width="15%">
             <b>Reservation<br>Status: </b>
