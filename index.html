@@ -10,10 +10,9 @@
   <script id="hike-list-template" type="text/x-handlebars-template">
   <div width="100%" align="center">
 
-    <div align="left" class="hike-box">
+    <div align="center" class="hike-box">
       <h3>
-        Greetings fellow hikers!  Please email me your RSVP at benjamincrom@gmail.com.  
-        I will follow up with you via email.
+        Greetings fellow hikers!  Please email me your RSVPs at <a href="mailto:benjamincrom@gmail.com">benjamincrom@gmail.com</a> and I will follow up with you via email.
       </h3>
     </div>
     
@@ -81,6 +80,10 @@
         {{/if}}
 
       </table><br />
+
+      <center>
+      <a href="mailto:benjamincrom@gmail.com?Subject=RSVP%20for%20{{hike_location_name}}%20on%20{{hike_start_datestring}}" class="rsvp-button">Email RSVP</a>
+      </center><br />
 
       {{#if hike_pictures_url}}
         <center><iframe width="90%" height="600" src="{{hike_pictures_url}}"></iframe>
