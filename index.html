@@ -81,9 +81,11 @@
 
       </table><br />
 
-      <center>
-      <a href="mailto:benjamincrom@gmail.com?Subject=RSVP%20for%20{{hike_location_name}}%20on%20{{hike_start_datestring}}" class="rsvp-button">Email RSVP</a>
-      </center><br />
+      {{#if hike_in_future}}
+        <center>
+        <a href="mailto:benjamincrom@gmail.com?Subject=RSVP%20for%20{{hike_location_name}}%20on%20{{hike_start_datestring}}" class="rsvp-button">Email RSVP</a>
+        </center><br />
+      {{/if}}
 
       {{#if hike_pictures_url}}
         <center><iframe width="90%" height="600" src="{{hike_pictures_url}}"></iframe>
