@@ -74,10 +74,12 @@
                         <hr>
                         <h3 class="uber">{{hike_location_name}}</h3>
                     </div>
-                    <h4 class="uber">
-                        {{#if hike_distance_miles}}{{hike_distance_miles}} miles{{/if}}
-                        {{#if hike_elevation_gain}} +{{hike_elevation_gain}} feet{{/if}}
-                    </h4>
+                    {{#if hike_distance_miles}}
+                        <h4 class="uber">
+                            {{hike_distance_miles}} miles
+                            {{#if hike_elevation_gain}} +{{hike_elevation_gain}} feet{{/if}}
+                        </h4>
+                    {{/if}}
                     <h5 class="uber">{{hike_start_datestring}} - {{hike_end_datestring}}</h5>
         		    {{#if hike_in_future}}
                         <h5 class="uber">
