@@ -8,7 +8,7 @@
 <head>
 	<meta charset="utf-8">
 	<script src="js/lib/modernizr.js"></script>
-	<script src="handlebars-v1.3.0.js"></script>
+	<script src="js/lib/handlebars-v1.3.0.js"></script>
 
 	<title>Hike With Ben</title>
 
@@ -40,9 +40,7 @@
 	<![endif]-->
 </head>
 
-
 <body>
-
 
 	<!-- Top of the page -->
 	<div id="top"></div>
@@ -57,105 +55,101 @@
 			</div>
 		</div>
 	</section>
-
-
+    
 	<section id="intro" class="intro">
 
-  <span id="content-placeholder" class="text_js"></span>
+        <span id="content-placeholder" class="text_js"></span>
 
-  <script id="hike-list-template" type="text/x-handlebars-template">
-   <div class="row">
-      <h3 class="uber">
-        Greetings fellow hikers!  <span class="serif">Please send me your RSVPs at <a href="mailto:benjamincrom@gmail.com">benjamincrom@gmail.com</a> or just use the form at the bottom of the page and I will follow up with you via email.</span>
-      </h3>
-   </div>
-   <br />
+        <script id="hike-list-template" type="text/x-handlebars-template">
+        <div class="row">
+            <h3 class="uber">
+                Greetings fellow hikers! <span class="serif">Please send me your RSVPs at <a href="mailto:benjamincrom@gmail.com">benjamincrom@gmail.com</a> or just use the form at the bottom of the page and I will follow up with you via email.</span>
+            </h3>
+        </div>
 
-    {{#each hike_list}}
-    <div class="row">
-    <div class="eight col center text-center">
-      <div class="row title">
-      <hr>
-      <h3 class="uber">{{hike_location_name}}</h3>
-      </div>
-      <h4 class="uber">
-        {{#if hike_distance_miles}}{{hike_distance_miles}} miles{{/if}}
-        {{#if hike_elevation_gain}} +{{hike_elevation_gain}} feet{{/if}}
-      </h4>
-      <h5 class="uber">{{hike_start_datestring}} - {{hike_end_datestring}}</h5>
-		{{#if hike_in_future}}
-      <h5 class="uber">
-        		<a href="mailto:benjamincrom@gmail.com?Subject=RSVP%20for%20{{hike_location_name}}%20on%20{{hike_start_datestring}}" class="btn outline color">RSVP</a>
-      </h5>
-     		{{/if}}
-    </div>
+        {{#each hike_list}}
+            <div class="row">
+                <div class="eight col center text-center">
+                    <div class="row title">
+                        <hr>
+                        <h3 class="uber">{{hike_location_name}}</h3>
+                    </div>
+                    <h4 class="uber">
+                        {{#if hike_distance_miles}}{{hike_distance_miles}} miles{{/if}}
+                        {{#if hike_elevation_gain}} +{{hike_elevation_gain}} feet{{/if}}
+                    </h4>
+                    <h5 class="uber">{{hike_start_datestring}} - {{hike_end_datestring}}</h5>
+        		    {{#if hike_in_future}}
+                        <h5 class="uber">
+                		<a href="mailto:benjamincrom@gmail.com?Subject=RSVP%20for%20{{hike_location_name}}%20on%20{{hike_start_datestring}}" class="btn outline color">RSVP</a>
+                        </h5>
+             		{{/if}}
+                </div>
 
-      <div class="row equal">
-	<div class="three col medium-three col small-six col">
-		<div class="icon-nav">
-            		<b>Reservation<br>Status: </b>
-            		{{hike_reservation_status}}
-		</div>
-	</div>
-        		{{#if hike_hazards}}
-	<div class="three col medium-three col small-six col">
-		<div class="icon-nav">
-		        <b>Hazards: </b>
-              		{{hike_hazards}}
-		</div>
-	</div>
-        		{{/if}}
-        		{{#if hike_notes}}
-	<div class="three col medium-three col small-six col">
-		<div class="icon-nav">
-              		<b>Notes: </b>
-              		{{hike_notes}}
-		</div>
-	</div>
-        		{{/if}}
-        		{{#if hike_location_latitude}}
-	<div class="three col medium-three col small-six col">
-		<div class="icon-nav">
-              		<b>Location: </b>
-              		<a class="btn" href="http://maps.google.com/?q={{hike_location_latitude}},{{hike_location_longitude}}">
-              		{{hike_location_latitude}}, {{hike_location_longitude}}</a>
-		</div>
-	</div>
-        		{{/if}}
-        		{{#if hike_route_url}}
-	<div class="three col medium-three col small-six col">
-		<div class="icon-nav">
-              		<b>Recorded GPS Route: </b>
-              		<a class="btn" href="{{hike_route_url}}">KMZ File</a><br />
-		</div>
-	</div>
-        		{{/if}}
-     </div>
+                <div class="row equal">
+                    <div class="three col medium-three col small-six col">
+                        <div class="icon-nav">
+                    	   <b>Reservation<br>Status: </b>
+                    		{{hike_reservation_status}}
+                        </div>
+                    </div>
+                	{{#if hike_hazards}}
+                        <div class="three col medium-three col small-six col">
+                            <div class="icon-nav">
+                            <b>Hazards: </b>
+                      		{{hike_hazards}}
+                        </div>
+                	{{/if}}
+                	{{#if hike_notes}}
+                        <div class="three col medium-three col small-six col">
+                            <div class="icon-nav">
+                                <b>Notes: </b>
+                                {{hike_notes}}
+                            </div>
+                        </div>
+                    {{/if}}
+                    {{#if hike_location_latitude}}
+                        <div class="three col medium-three col small-six col">
+                            <div class="icon-nav">
+                                <b>Location: </b>
+                                <a class="btn" href="http://maps.google.com/?q={{hike_location_latitude}},{{hike_location_longitude}}">
+                                {{hike_location_latitude}}, {{hike_location_longitude}}</a>
+                            </div>
+                        </div>
+                	{{/if}}
+                	{{#if hike_route_url}}
+                        <div class="three col medium-three col small-six col">
+                            <div class="icon-nav">
+                                <b>Recorded GPS Route: </b>
+                                <a class="btn" href="{{hike_route_url}}">KMZ File</a><br />
+                            </div>
+                        </div>
+                	{{/if}}
+                </div>
 
-     		  {{#if hike_pictures_url}}
-    	<div class="row equal">
-		<div class="icon-nav">
-        	  <iframe width="90%" height="600" src="{{hike_pictures_url}}"></iframe>
-		</div>
-	</div>
-      		  {{/if}}
-    <br /><br />
-    <br /><br />
-    </div>
+                {{#if hike_pictures_url}}
+                    <div class="row equal">
+                        <div class="icon-nav">
+                            <iframe width="90%" height="600" src="{{hike_pictures_url}}"></iframe>
+                        </div>
+                    </div>
+              	{{/if}}
+            </div>
 
 
-    {{/each}}
-  </script>
-		<div class="header large bg-img fixed background-four">
-			<div class="header-inner">
-				<h2 class="bigtext text-white uber mb0">Hike with Ben</h2>
-			</div>
-		</div>
-</section>
+        {{/each}}
+        </script>
+    	
+        <div class="header large bg-img fixed background-four">
+    		<div class="header-inner">
+    			<h2 class="bigtext text-white uber mb0">Hike with Ben</h2>
+    		</div>
+    	</div>
+
+    </section>
 
 	<!-- Contact -->
 	<section id="contact" class="contact">
-
 
 		<!-- Title -->
 		<div class="row title">
@@ -163,17 +157,13 @@
 			<hr>
 		</div>
 
-
 		<div class="row">
-
 
 			<!-- Contact form -->
 			<div class="six col offset-by-one">
 
-
 				<!-- Succes message after sending the form, see also the php file around line 90 -->
 				<div id="message" class="c-message"></div>
-
 
 				<!-- Form -->
 				<form method="post" action="contact.php" name="contactform" id="contactform" class="form form-stacked c-form">
@@ -187,14 +177,11 @@
 				</form>
 			</div>
 
-
 			<!-- Contact details -->
 			<div class="four col text-left">
 
-
 				<h3 class="h6 uber mb0">Let's get in touch</h3>
 				<p>Want to get more information or just say hi?  Just fill out the form to the side or contact me via the details below.</p> 
-
 
 				<h3 class="h6 uber mb0">Contact details</h3>
 				<address class="c-details">
@@ -207,14 +194,10 @@
 		</div>
 	</section>
 
-
-
-
 	<!-- Back to top -->
 	<div class="back-top-wrap">
 		<a href="#top" class="scrollto"><i class="back-top fa fa-chevron-up"></i></a>
 	</div>
-
 
 	<!-- Javascript -->
 	<script src="js/lib/jquery.min.js"></script>
@@ -226,7 +209,6 @@
 	<script src="js/lib/jquery.equal.js"></script>
 	<script src="js/main.js"></script>
   	<script src="js/app.js"></script>
-
 
 </body>
 </html>
