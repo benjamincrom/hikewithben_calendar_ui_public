@@ -1,102 +1,232 @@
-<html>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="handlebars-v1.3.0.js"></script>
-  
-  <link data-require="bootstrap-css@*" data-semver="3.0.0" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="css/app.css">
+<!DOCTYPE html>
+<html lang="en">
+<!--[if IE 7]><html lang="en" class="ie7"><![endif]-->
+<!--[if IE 8]><html lang="en" class="ie8"><![endif]-->
+<!--[if IE 9]><html lang="en" class="ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><html lang="en"><![endif]-->
+<!--[if !IE]><html lang="en"><![endif]-->
+<head>
+	<meta charset="utf-8">
+	<script src="js/lib/modernizr.js"></script>
+	<script src="handlebars-v1.3.0.js"></script>
+
+	<title>Hike With Ben</title>
+
+	<meta name="robots" content="index, nofollow">
+	<meta name="description" content="The description of your website">
+	<meta name="keywords" content="the, website, keywords">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+	<!-- Fonts -->
+	<link href='http://fonts.googleapis.com/css?family=Raleway:400,100,300,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+	<!-- Essential stylesheets -->
+	<link rel="stylesheet" href="css/lib/font-awesome.min.css">
+	<link rel="stylesheet" href="css/lib/magnific-popup.css">
+	<link rel="stylesheet" href="css/lib/bxslider.css">
+	<link rel="stylesheet" href="css/lib/owl.carousel.css">
+	<link rel="stylesheet" href="css/lib/owl.theme.css">
+	<link rel="stylesheet" href="css/lib/base.css">
+
+	<!-- The stylesheet -->
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- The favicon -->
+	<link rel="shortcut icon" href="images/favicon.ico">
+
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+
+
+<body>
+
+
+	<!-- Top of the page -->
+	<div id="top"></div>
+
+	<!-- Home static background -->
+	<section id="home" class="home">
+		<div class="header large bg-img fixed background-one">
+			<div class="header-inner">
+				<!-- Content -->
+				<h2 class="bigtext text-white uber mb0">Hike with Ben</h2>
+				<h4 class="serif bigtext text-white">2014 Expedition Calendar</h4>
+			</div>
+		</div>
+	</section>
+
+
+	<section id="intro" class="intro">
 
   <span id="content-placeholder" class="text_js"></span>
 
   <script id="hike-list-template" type="text/x-handlebars-template">
-  <div width="100%" align="center">
-
-    <div align="center" class="hike-box">
-      <h3>
-        Greetings fellow hikers!  Please email me your RSVPs at <a href="mailto:benjamincrom@gmail.com">benjamincrom@gmail.com</a> and I will follow up with you via email.
+   <div class="row">
+      <h3 class="uber">
+        Greetings fellow hikers!  <span class="serif">Please send me your RSVPs at <a href="mailto:benjamincrom@gmail.com">benjamincrom@gmail.com</a> or just use the form at the bottom of the page and I will follow up with you via email.</span>
       </h3>
-    </div>
-    
+   </div>
+   <br />
+
     {{#each hike_list}}
-    <div align="left" class="hike-box">
-      <h3 align="center">{{hike_location_name}}</h3>
-      <h4 align="center">
+    <div class="row">
+    <div class="eight col center text-center">
+      <div class="row title">
+      <hr>
+      <h3 class="uber">{{hike_location_name}}</h3>
+      </div>
+      <h4 class="uber">
         {{#if hike_distance_miles}}{{hike_distance_miles}} miles{{/if}}
         {{#if hike_elevation_gain}} +{{hike_elevation_gain}} feet{{/if}}
       </h4>
-      <h5 align="center">{{hike_start_datestring}} - {{hike_end_datestring}}</h5>
-      
-      <table cellpadding="5" width="100%">
-        <tr>
-          <td width="15%">
-            <b>Reservation<br>Status: </b>
-          </td>
-          <td>
-            {{hike_reservation_status}}
-          </td>
-        </tr>
-
-        {{#if hike_hazards}}
-          <tr>
-            <td>
-              <b>Hazards: </b>
-            </td>
-            <td>
-              {{hike_hazards}}
-            </td>
-          </tr>
-        {{/if}}
-
-        {{#if hike_notes}}
-          <tr>
-            <td>
-              <b>Notes: </b>
-            </td>
-            <td>
-              {{hike_notes}}
-            </td>
-          </tr>
-        {{/if}}
-
-        {{#if hike_location_latitude}}
-          <tr>
-            <td>
-              <b>Location: </b>
-            </td>
-            <td>
-              <a href="http://maps.google.com/?q={{hike_location_latitude}},{{hike_location_longitude}}">
-              {{hike_location_latitude}}, {{hike_location_longitude}}</a>
-            </td>
-          </tr>
-        {{/if}}
-
-        {{#if hike_route_url}}
-          <tr>
-            <td>
-              <a href="{{hike_route_url}}"><b>Recorded GPS Route</b></a><br />
-            </td>
-            <td>
-            </td>
-          </tr>
-        {{/if}}
-
-      </table><br />
-
-      {{#if hike_in_future}}
-        <center>
-        <a href="mailto:benjamincrom@gmail.com?Subject=RSVP%20for%20{{hike_location_name}}%20on%20{{hike_start_datestring}}" class="rsvp-button">Email RSVP</a>
-        </center><br />
-      {{/if}}
-
-      {{#if hike_pictures_url}}
-        <center><iframe width="90%" height="600" src="{{hike_pictures_url}}"></iframe>
-      {{/if}}
-
+      <h5 class="uber">{{hike_start_datestring}} - {{hike_end_datestring}}</h5>
+		{{#if hike_in_future}}
+      <h5 class="uber">
+        		<a href="mailto:benjamincrom@gmail.com?Subject=RSVP%20for%20{{hike_location_name}}%20on%20{{hike_start_datestring}}" class="btn outline color">RSVP</a>
+      </h5>
+     		{{/if}}
     </div>
-    
+
+      <div class="row equal">
+	<div class="three col medium-three col small-six col">
+		<div class="icon-nav">
+            		<b>Reservation<br>Status: </b>
+            		{{hike_reservation_status}}
+		</div>
+	</div>
+        		{{#if hike_hazards}}
+	<div class="three col medium-three col small-six col">
+		<div class="icon-nav">
+		        <b>Hazards: </b>
+              		{{hike_hazards}}
+		</div>
+	</div>
+        		{{/if}}
+        		{{#if hike_notes}}
+	<div class="three col medium-three col small-six col">
+		<div class="icon-nav">
+              		<b>Notes: </b>
+              		{{hike_notes}}
+		</div>
+	</div>
+        		{{/if}}
+        		{{#if hike_location_latitude}}
+	<div class="three col medium-three col small-six col">
+		<div class="icon-nav">
+              		<b>Location: </b>
+              		<a class="btn" href="http://maps.google.com/?q={{hike_location_latitude}},{{hike_location_longitude}}">
+              		{{hike_location_latitude}}, {{hike_location_longitude}}</a>
+		</div>
+	</div>
+        		{{/if}}
+        		{{#if hike_route_url}}
+	<div class="three col medium-three col small-six col">
+		<div class="icon-nav">
+              		<b>Recorded GPS Route: </b>
+              		<a class="btn" href="{{hike_route_url}}">KMZ File</a><br />
+		</div>
+	</div>
+        		{{/if}}
+     </div>
+
+     		  {{#if hike_pictures_url}}
+    	<div class="row equal">
+		<div class="icon-nav">
+        	  <iframe width="90%" height="600" src="{{hike_pictures_url}}"></iframe>
+		</div>
+	</div>
+      		  {{/if}}
+    <br /><br />
+    <br /><br />
+    </div>
+
+
     {{/each}}
-
-  </div>
   </script>
+		<div class="header large bg-img fixed background-four">
+			<div class="header-inner">
+				<h2 class="bigtext text-white uber mb0">Hike with Ben</h2>
+			</div>
+		</div>
+</section>
 
-  <script src="js/app.js"></script>
+	<!-- Contact -->
+	<section id="contact" class="contact">
+
+
+		<!-- Title -->
+		<div class="row title">
+			<h2>Contact</h2>
+			<hr>
+		</div>
+
+
+		<div class="row">
+
+
+			<!-- Contact form -->
+			<div class="six col offset-by-one">
+
+
+				<!-- Succes message after sending the form, see also the php file around line 90 -->
+				<div id="message" class="c-message"></div>
+
+
+				<!-- Form -->
+				<form method="post" action="contact.php" name="contactform" id="contactform" class="form form-stacked c-form">
+					<fieldset>
+						<input name="name" type="text" id="name" placeholder="Your Name" />
+						<input name="email" type="text" id="email" placeholder="Your E-mail" />
+						<textarea name="comments" id="comments" placeholder="Message"></textarea>
+						<input name="verify" type="text" id="verify" size="4" value="" placeholder="3 + 1 =" />
+						<input type="submit" class="submit btn outline" id="submit" value="Send message" />
+					</fieldset>
+				</form>
+			</div>
+
+
+			<!-- Contact details -->
+			<div class="four col text-left">
+
+
+				<h3 class="h6 uber mb0">Let's get in touch</h3>
+				<p>Want to get more information or just say hi?  Just fill out the form to the side or contact me via the details below.</p> 
+
+
+				<h3 class="h6 uber mb0">Contact details</h3>
+				<address class="c-details">
+					<a href="mailto:benjamincrom@gmail.com">
+						<i class="fa fa-envelope-o"></i>
+						<span>benjamincrom@gmail.com</span>
+					</a>
+				</address>
+			</div>
+		</div>
+	</section>
+
+
+
+
+	<!-- Back to top -->
+	<div class="back-top-wrap">
+		<a href="#top" class="scrollto"><i class="back-top fa fa-chevron-up"></i></a>
+	</div>
+
+
+	<!-- Javascript -->
+	<script src="js/lib/jquery.min.js"></script>
+	<script src="js/lib/retina.min.js"></script>
+	<script src="js/lib/jquery.magnific-popup.min.js"></script>
+	<script src="js/lib/jquery.bxslider.min.js"></script>
+	<script src="js/lib/owl.carousel.min.js"></script>
+	<script src="js/lib/jquery.fitvids.js"></script>
+	<script src="js/lib/jquery.equal.js"></script>
+	<script src="js/main.js"></script>
+  	<script src="js/app.js"></script>
+
+
+</body>
 </html>
